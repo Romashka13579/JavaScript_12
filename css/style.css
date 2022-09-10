@@ -1,21 +1,29 @@
-body{
+body {
     margin: 0px;
 }
-.main{
+
+.main {
     width: 100%;
     height: auto;
     min-height: 100vh;
-    padding: 60px 120px;
-    box-sizing: border-box;
     background: rgb(211, 211, 211);
+    display: flex;
+    justify-content: space-around;
+}
+
+.main-conteiner {
     display: grid;
+    margin-top: 50px;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
-.coloumn{
+
+.coloumn {
     flex-direction: column;
 }
-.row-block{
+
+.row-block {
+    width: 300px;
     height: 150px;
     margin-bottom: 30px;
     background: rgb(180, 180, 180);
@@ -24,7 +32,8 @@ body{
     justify-content: space-around;
     align-items: center;
 }
-.block-txt{
+
+.block-txt {
     margin: auto;
     font-family: 'Courier New', Courier, monospace;
     font-size: 30px;
