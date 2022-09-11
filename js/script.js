@@ -31,12 +31,17 @@ function Grab(blocks){
             block_clone.addEventListener('mouseup', (e) => {
                 pressed = false;
                 e.preventDefault();
+                x2 = e.clientX;
+                y2 = e.clientY;
                 coloumns.forEach(coloumn => {
-                    // if()
-                    block_clone_2.style.background = "rgb(140, 140, 140)"
-                    coloumn.prepend(block_clone_2);
-                    var blocks = document.querySelectorAll(".row-block");
-                    Grab(blocks);
+                    var coloumn_style = coloumn.getBoundingClientRect();
+                    console.log(coloumn_style);
+                    if((x2 < coloumn_style.width + coloumn_style.left && x2 > coloumn_style.left) && (y2 < coloumn_style.height + coloumn_style.top && y2 > coloumn_style.top)){
+                        block_clone_2.style.background = "rgb(140, 140, 140)"
+                        coloumn.prepend(block_clone_2);
+                        var blocks = document.querySelectorAll(".row-block");
+                        Grab(blocks);
+                    }
                 });
                 block_clone.style.display = "none";
             });
