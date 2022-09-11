@@ -21,27 +21,23 @@ body {
 }
 
 .coloumn {
-    height: 150px;
+    display: flex;
     height: fit-content;
     flex-direction: column;
     border-left: 2px dotted grey;
     border-right: 2px dotted grey;
     padding: 0px 10px;
+    row-gap: 30px;
 }
 
 .row-block {
     width: 300px;
     height: 150px;
-    margin-bottom: 30px;
     background: rgb(180, 180, 180);
     border-radius: 20px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
-
-.lastone{
-    margin-bottom: 0px;
 }
 
 .block-txt {
