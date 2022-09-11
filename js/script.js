@@ -13,13 +13,20 @@ blocks.forEach(block => {
         main_conteiner.prepend(block_clone);
         var x_0 = e.clientX;
         var y_0 = e.clientY;
+        block_clone.style.cursor = 'grabbing'
         block_clone.style.left = ""+x_0+"px";
         block_clone.style.top = ""+y_0+"px";
         block.style.display = "none";
         console.log(x, y);
         ForMousemove(e, block_clone, x, y);
         block_clone.addEventListener('mousemove', (e) => {
-            ForMousemove(e, block_clone, x, y);
+            if(pressed == true){
+                ForMousemove(e, block_clone, x, y);
+            }
+        });
+        block_clone.addEventListener('mouseup', (e) => {
+            pressed = false;
+            e.preventDefault();
         });
     });
 });
