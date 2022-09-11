@@ -1,12 +1,12 @@
 body {
     margin: 0px;
+    background: rgb(211, 211, 211);
 }
 
 .main {
     width: 100%;
     height: auto;
     min-height: 100vh;
-    background: rgb(211, 211, 211);
     display: flex;
     justify-content: space-around;
 }
@@ -14,12 +14,17 @@ body {
 .main-conteiner {
     display: grid;
     margin-top: 50px;
+    height: auto;
+    margin-bottom: auto;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
 .coloumn {
     flex-direction: column;
+    border-left: 2px dotted grey;
+    border-right: 2px dotted grey;
+    padding: 0px 10px;
 }
 
 .row-block {
@@ -31,6 +36,10 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.lastone{
+    margin-bottom: 0px;
 }
 
 .block-txt {
