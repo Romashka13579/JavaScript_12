@@ -21,6 +21,7 @@ body {
 }
 
 .coloumn {
+    height: fit-content;
     flex-direction: column;
     border-left: 2px dotted grey;
     border-right: 2px dotted grey;
