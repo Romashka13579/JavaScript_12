@@ -2,6 +2,7 @@ var blocks = document.querySelectorAll(".row-block");
 var coloumns = document.querySelectorAll(".coloumn");
 var main_conteiner = document.querySelector(".main-conteiner");
 var pressed = false;
+var coloumn_is = 0;
 
 Grab(blocks);
 
@@ -35,14 +36,19 @@ function Grab(blocks){
                 y2 = e.clientY;
                 coloumns.forEach(coloumn => {
                     var coloumn_style = coloumn.getBoundingClientRect();
-                    console.log(coloumn_style);
                     if((x2 < coloumn_style.width + coloumn_style.left && x2 > coloumn_style.left) && (y2 < coloumn_style.height + coloumn_style.top && y2 > coloumn_style.top)){
                         block_clone_2.style.background = "rgb(140, 140, 140)"
                         coloumn.prepend(block_clone_2);
                         var blocks = document.querySelectorAll(".row-block");
                         Grab(blocks);
+                        coloumn_is = 1;
                     }
                 });
+                if(coloumn_is != 1){
+                    block.style.display = "block";
+                    block.style.background = "rgb(140, 140, 140)"
+                }
+                coloumn_is = 0;
                 block_clone.style.display = "none";
             });
         });
