@@ -10,25 +10,24 @@ function Grab(blocks){
     blocks.forEach(block => {
         block.addEventListener('mousedown', (e) => {
             pressed = true;
-            e.preventDefault();
-            var x = e.offsetX;
-            var y = e.offsetY;
+            var x = e.clientX;
+            var y = e.clientY;
+            var posx_in_obj = x - block.offsetLeft;
+            var posy_in_obj = y - block.offsetTop;
             var block_clone = block.cloneNode(true);
-            var block_clone_2 = block.cloneNode(true);
             main_conteiner.prepend(block_clone);
-            var x_0 = e.clientX;
-            var y_0 = e.clientY;
-            block_clone.style.cursor = 'grabbing'
-            block_clone.style.left = ""+x_0+"px";
-            block_clone.style.top = ""+y_0+"px";
-            block.style.display = "none";
-            console.log(x, y);
-            ForMousemove(e, block_clone, x, y);
             block_clone.addEventListener('mousemove', (e) => {
                 if(pressed == true){
-                    ForMousemove(e, block_clone, x, y);
+                    var x = e.clientX;
+                    var y = e.clientY;
+                    ForMousemove(e, block_clone, posx_in_obj, posy_in_obj);
                 }
             });
+            ForMousemove(e, block_clone, posx_in_obj, posy_in_obj);
+
+            var block_clone_2 = block.cloneNode(true);
+            block.style.display = "none";
+            // block_clone.style.cursor = 'grab';
             block_clone.addEventListener('mouseup', (e) => {
                 pressed = false;
                 e.preventDefault();
@@ -58,8 +57,9 @@ function Grab(blocks){
 function ForMousemove(e, block_clone, x, y){
     var x1 = e.clientX;
     var y1 = e.clientY;
+    console.log(x1, y1);
     block_clone.style.position = "absolute"
     block_clone.style.background = "rgb(140, 140, 140)"
-    block_clone.style.left = ""+(x1-x)+"px"
-    block_clone.style.top = ""+(y1-y)+"px"
+    block_clone.style.left = ""+(x1 - x)+"px"
+    block_clone.style.top = ""+(y1 - y)+"px"
 }

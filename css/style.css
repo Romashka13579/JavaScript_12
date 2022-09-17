@@ -30,8 +30,7 @@ body {
     row-gap: 30px;
 }
 
-.row-block,
-.row-block-hidden {
+.row-block{
     width: 20vw;
     height: 22vh;
     background: rgb(180, 180, 180);
@@ -40,7 +39,6 @@ body {
     justify-content: space-around;
     align-items: center;
 }
-.row-block-hidden{background: none;}
 
 .block-txt {
     margin: auto;
