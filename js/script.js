@@ -16,29 +16,27 @@ function Grab(blocks){
             var posy_in_obj = y - block.offsetTop;
             var block_clone = block.cloneNode(true);
             main_conteiner.prepend(block_clone);
+
+            var block_clone_2 = block.cloneNode(true);
+            block.style.display = "none";
+            
             block_clone.addEventListener('mousemove', (e) => {
                 if(pressed == true){
-                    var x = e.clientX;
-                    var y = e.clientY;
                     ForMousemove(e, block_clone, posx_in_obj, posy_in_obj);
                 }
             });
             ForMousemove(e, block_clone, posx_in_obj, posy_in_obj);
 
-            var block_clone_2 = block.cloneNode(true);
-            block.style.display = "none";
-            // block_clone.style.cursor = 'grab';
             block_clone.addEventListener('mouseup', (e) => {
                 pressed = false;
-                e.preventDefault();
                 x2 = e.clientX;
                 y2 = e.clientY;
                 coloumns.forEach(coloumn => {
                     var coloumn_style = coloumn.getBoundingClientRect();
                     if((x2 < coloumn_style.width + coloumn_style.left && x2 > coloumn_style.left) && (y2 < coloumn_style.height + coloumn_style.top && y2 > coloumn_style.top)){
-                        block_clone_2.style.background = "rgb(140, 140, 140)"
                         coloumn.prepend(block_clone_2);
                         var blocks = document.querySelectorAll(".row-block");
+                        block_clone_2.style.background = "rgb(140, 140, 140)"
                         Grab(blocks);
                         coloumn_is = 1;
                     }
@@ -48,7 +46,7 @@ function Grab(blocks){
                     block.style.background = "rgb(140, 140, 140)"
                 }
                 coloumn_is = 0;
-                block_clone.style.display = "none";
+                block_clone.remove();
             });
         });
     });
@@ -57,9 +55,9 @@ function Grab(blocks){
 function ForMousemove(e, block_clone, x, y){
     var x1 = e.clientX;
     var y1 = e.clientY;
-    console.log(x1, y1);
     block_clone.style.position = "absolute"
     block_clone.style.background = "rgb(140, 140, 140)"
     block_clone.style.left = ""+(x1 - x)+"px"
     block_clone.style.top = ""+(y1 - y)+"px"
+    block_clone.style.cursor = 'grabbing'
 }

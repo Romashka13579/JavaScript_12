@@ -41,7 +41,7 @@ body {
 }
 
 .block-txt {
-    margin: auto;
+    width: auto;
     font-family: 'Courier New', Courier, monospace;
     font-size: 30px;
     font-weight: 600;
